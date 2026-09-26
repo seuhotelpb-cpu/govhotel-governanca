@@ -107,4 +107,44 @@ document.addEventListener('DOMContentLoaded', async () => {
       </p>
     `;
   }
+    // ==============================
+  // CARREGAMENTO DOS QUARTOS
+  // ==============================
+
+  const listaQuartos = document.getElementById('lista-quartos');
+  const totalQuartos = document.getElementById('total-quartos');
+
+  if (listaQuartos && totalQuartos) {
+    try {
+      const { data: quartos, error: erroQuartos } = await supabaseClient
+        .from('quartos')
+        .select('id, numero, andar, categoria')
+        .eq('ativo', true)
+        .order('numero', { ascending: true });
+
+      if (erroQuartos) {
+        throw erroQuartos;
+      }
+
+      totalQuartos.textContent = quartos.length;
+
+      listaQuartos.innerHTML = quartos.map((quarto) => `
+        <div class="quarto-card">
+          <strong>Quarto ${quarto.numero}</strong><br>
+          Categoria: ${quarto.categoria || 'Não informada'}<br>
+          Andar: ${quarto.andar}
+        </div>
+      `).join('');
+
+      console.log(`${quartos.length} quarto(s) carregado(s).`);
+
+    } catch (erro) {
+      console.error('Erro ao carregar quartos:', erro);
+
+      totalQuartos.textContent = 'Erro';
+      listaQuartos.innerHTML = `
+        <p>Não foi possível carregar os quartos.</p>
+      `;
+    }
+  }
 });
