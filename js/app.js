@@ -158,7 +158,13 @@ document.addEventListener('DOMContentLoaded', async () => {
               Andar:
               ${quarto.andar}
 <br><br>
-<strong>Status:</strong> ${quarto.status || 'Livre'}
+<strong>Status:</strong><br>
+<select class="status-quarto" data-id="${quarto.id}">
+  <option value="Livre" ${quarto.status === 'Livre' ? 'selected' : ''}>Livre</option>
+  <option value="Ocupado" ${quarto.status === 'Ocupado' ? 'selected' : ''}>Ocupado</option>
+  <option value="Limpeza" ${quarto.status === 'Limpeza' ? 'selected' : ''}>Limpeza</option>
+  <option value="Manutenção" ${quarto.status === 'Manutenção' ? 'selected' : ''}>Manutenção</option>
+</select>
             </div>
           `;
         })
