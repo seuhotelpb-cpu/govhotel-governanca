@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const { data: quartos, error: erroQuartos } = await supabaseClient
         .from('quartos')
-        .select('id, numero, andar, categoria, ativo')
+        .select('id, numero, andar, categoria, ativo, status')
         .eq('ativo', true)
         .order('numero', { ascending: true });
 
@@ -157,7 +157,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
               Andar:
               ${quarto.andar}
-
+<br><br>
+<strong>Status:</strong> ${quarto.status || 'Livre'}
             </div>
           `;
         })
