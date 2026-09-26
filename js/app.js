@@ -184,3 +184,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 });
+
+// ========================================
+// ATUALIZAR STATUS DOS QUARTOS
+// ========================================
+
+document.addEventListener('change', async (event) => {
+
+  if (!event.target.classList.contains('status-quarto')) {
+    return;
+  }
+
+  const seletor = event.target;
+  const quartoId = seletor.dataset.id;
+  const novoStatus = seletor.value;
+
+  seletor.disabled = true;
+
+  const { error } = await supabaseClient
+    .from('quartos')
+    .update({ status: novoStatus })
+    .eq('id', quartoId);
+
+  seletor.disabled = false;
+
+  if (error) {
+    console.error('Erro ao atualizar status:', error);
+    alert('Não foi possível atualizar o status do quarto.');
+    return;
+  }
+
+  console.log(`Quarto ${quartoId} atualizado para ${novoStatus}`);
+});
