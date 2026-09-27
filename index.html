@@ -116,6 +116,7 @@
   <p id="login-mensagem"></p>
 </div>
 
+  <div id="sistema" style="display: none;">
 <header>
   <h1>GOVHOTEL</h1>
   <p>Sistema de Governança • SEU HOTEL</p>
@@ -216,9 +217,13 @@
     }
 
     mensagem.textContent = 'Login realizado com sucesso!';
+document.getElementById('tela-login').style.display = 'none';
+document.getElementById('sistema').style.display = 'block';
+    
     console.log('Usuário conectado:', data.user);
   });
 </script>
+    </div>
 <script src="js/app.js"></script>
 </body>
 </html>
