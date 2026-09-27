@@ -92,6 +92,30 @@
 
 <body>
 
+  <!-- TELA DE LOGIN GOVHOTEL -->
+<div id="tela-login">
+  <h2>GOVHOTEL</h2>
+  <p>Acesso ao Sistema de Governança</p>
+
+  <input
+    type="email"
+    id="login-email"
+    placeholder="E-mail"
+    autocomplete="email"
+  >
+
+  <input
+    type="password"
+    id="login-senha"
+    placeholder="Senha"
+    autocomplete="current-password"
+  >
+
+  <button id="btn-login">Entrar</button>
+
+  <p id="login-mensagem"></p>
+</div>
+
 <header>
   <h1>GOVHOTEL</h1>
   <p>Sistema de Governança • SEU HOTEL</p>
@@ -170,6 +194,30 @@
   }
 
   testarSupabase();
+</script>
+  <script>
+  const btnLogin = document.getElementById('btn-login');
+
+  btnLogin.addEventListener('click', async () => {
+    const email = document.getElementById('login-email').value.trim();
+    const senha = document.getElementById('login-senha').value;
+    const mensagem = document.getElementById('login-mensagem');
+
+    mensagem.textContent = 'Entrando...';
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: senha
+    });
+
+    if (error) {
+      mensagem.textContent = 'E-mail ou senha incorretos.';
+      return;
+    }
+
+    mensagem.textContent = 'Login realizado com sucesso!';
+    console.log('Usuário conectado:', data.user);
+  });
 </script>
 <script src="js/app.js"></script>
 </body>
