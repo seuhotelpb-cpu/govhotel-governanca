@@ -186,22 +186,20 @@ body {
 </header>
 
 <main>
+<!-- PAINEL PRINCIPAL GOVHOTEL -->
 
-  <div class="card">
-    <h2>Governança</h2>
+<div class="card">
+  <h2>🏨 Governança</h2>
+  <p>Controle de arrumação, permanência e liberação dos quartos.</p>
 
-    <p>
-      Controle de arrumação, permanência e liberação dos quartos.
-    </p>
-
-    <div class="status">
-      Banco de dados:
-      <span id="conexao">verificando...</span>
-    </div>
+  <div class="status">
+    Banco de dados:
+    <span id="conexao">Verificando...</span>
   </div>
+</div>
 
-  <div class="card">
-  <h2>Arrumações</h2>
+<div class="card">
+  <h2>🧹 Arrumações</h2>
 
   <p id="resultado">
     Carregando informações...
@@ -209,14 +207,20 @@ body {
 
   <div id="lista-arrumacoes"></div>
 </div>
+
 <div class="card">
-  <h2>Quartos</h2>
-  <p>Total de quartos cadastrados: <strong id="total-quartos">...</strong></p>
+  <h2>🚪 Quartos</h2>
+
+  <p>
+    Total de quartos cadastrados:
+    <strong id="total-quartos">...</strong>
+  </p>
 
   <div id="lista-quartos">
     Carregando quartos...
   </div>
 </div>
+  
 </main>
 
 <!-- Biblioteca oficial do Supabase -->
