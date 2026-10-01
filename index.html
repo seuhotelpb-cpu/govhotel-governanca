@@ -149,8 +149,113 @@ body {
     font-size: 27px;
   }
 }
-  </style>
+    #tela-login h2 {
+    font-size: 27px;
+}
+
+/* COLE O NOVO CÓDIGO AQUI */
+/* ===== PAINEL PRINCIPAL GOVHOTEL ===== */
+
+#sistema {
+  min-height: 100vh;
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+#sistema header {
+  background: #ffffff;
+  padding: 22px 30px;
+  border-bottom: 4px solid #f5c400;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#sistema header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #333;
+}
+
+#sistema header p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+#sistema main {
+  width: 94%;
+  max-width: 1200px;
+  margin: 25px auto;
+}
+
+#sistema .card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+#sistema .card h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 2px solid #f5c400;
+  padding-bottom: 10px;
+}
+
+#lista-arrumacoes {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+#lista-quartos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+#lista-quartos > div {
+  background: #f7f7f7;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#lista-quartos select {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  background: white;
+}
+
+@media (max-width: 800px) {
+  #lista-quartos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #sistema main {
+    width: 92%;
+  }
+
+  #sistema header {
+    padding: 18px;
+  }
+
+  #lista-quartos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TERMINA O NOVO CÓDIGO AQUI */
+
+</style>
 </head>
+ 
 
 <body>
 
