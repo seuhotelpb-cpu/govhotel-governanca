@@ -9,6 +9,57 @@ document.addEventListener('DOMContentLoaded', async () => {
   const listaQuartos = document.getElementById('lista-quartos');
   const totalQuartos = document.getElementById('total-quartos');
 
+    // ========================================
+  // IDENTIFICAR USUÁRIO CONECTADO
+  // ========================================
+
+  const usuarioNome = document.getElementById('usuario-nome');
+  const usuarioFuncao = document.getElementById('usuario-funcao');
+
+  try {
+
+    const { data: { user }, error: erroUsuario } =
+      await supabaseClient.auth.getUser();
+
+    if (erroUsuario) {
+      throw erroUsuario;
+    }
+
+    if (user) {
+
+      const { data: perfil, error: erroPerfil } = await supabaseClient
+        .from('perfis')
+        .select('nome, funcao')
+        .eq('id', user.id)
+        .single();
+
+      if (erroPerfil) {
+        throw erroPerfil;
+      }
+
+      if (usuarioNome) {
+        usuarioNome.textContent = perfil.nome || 'Não informado';
+      }
+
+      if (usuarioFuncao) {
+        usuarioFuncao.textContent = perfil.funcao || 'Não informada';
+      }
+
+      console.log('Perfil conectado:', perfil);
+    }
+
+  } catch (erro) {
+
+    console.error('Erro ao carregar perfil:', erro);
+
+    if (usuarioNome) {
+      usuarioNome.textContent = 'Não identificado';
+    }
+
+    if (usuarioFuncao) {
+      usuarioFuncao.textContent = '-';
+    }
+  }
   // ========================================
   // CARREGAR ARRUMAÇÕES
   // ========================================
